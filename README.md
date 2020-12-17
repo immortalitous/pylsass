@@ -32,4 +32,4 @@ The following list gives an overview on working and non-working techniques (test
 - **slui.exe (Method 3):** blocked by Windows Defender
 
 ## 2. See also
-- **[WinPwnage](https://github.com/rootm0s/WinPwnage) by [rootm0s](https://github.com/rootm0s)**
+- **[WinPwnage](https://github.com/rootm0s/WinPwnage) by [@rootm0s](https://github.com/rootm0s)**
