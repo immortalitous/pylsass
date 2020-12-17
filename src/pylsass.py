@@ -11,7 +11,7 @@ import win32file
 import win32security
 import winreg
 
-sys.path.insert(1, f"{sys.path[0]}\\WinPwnage\\")
+sys.path.insert(1, f"{sys.path[0]}\\winpwnage\\")
 
 from winpwnage.functions.uac.uacMethod1 import uacMethod1
 from winpwnage.functions.uac.uacMethod2 import uacMethod2
