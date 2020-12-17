@@ -9,6 +9,10 @@ from win32com.shell.shell import ShellExecuteEx
 import win32con
 import win32file
 import win32security
+import winreg
+
+sys.path.insert(1, f"{sys.path[0]}\\WinPwnage\\")
+
 from winpwnage.functions.uac.uacMethod1 import uacMethod1
 from winpwnage.functions.uac.uacMethod2 import uacMethod2
 from winpwnage.functions.uac.uacMethod3 import uacMethod3
@@ -24,7 +28,6 @@ from winpwnage.functions.uac.uacMethod12 import uacMethod12
 from winpwnage.functions.uac.uacMethod13 import uacMethod13
 from winpwnage.functions.uac.uacMethod14 import uacMethod14
 from winpwnage.functions.uac.uacMethod15 import uacMethod15
-import winreg
 
 
 dbghelp = ctypes.windll.dbghelp
