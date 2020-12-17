@@ -15,6 +15,13 @@ PyLSASS is for educational purposes only, intended to show security flaws that a
 
 ## 1. Usage
 
+### User
+
+If necessary, the user for whom the hashes are to be extracted can be specified when initializing the class:
+```python
+PyLSASS(user = "Alice")
+```
+
 ### UAC bypassing
 WinPwnage is being used as a implementation of various [UAC bypass techniques](https://github.com/rootm0s/WinPwnage#uac-bypass-techniques). They can be passed to PyLSASS as an attribute:
 ```python
@@ -41,6 +48,19 @@ The following list gives an overview on working and non-working techniques (test
 - **sdclt.exe (Folder) (Method 12):** blocked by Windows Defender
 - **wsreset.exe (Method 14):** blocked by Windows Defender
 - **slui.exe and changepk.exe (Method 15):** blocked by Windows Defender
+
+### Return values
+
+The extracted credentials can be accessed by calling the ```credentials``` attribute of the class.
+```python
+pylsass = PyLSASS()
+print(pylsass.credentials)
+```
+
+Credentials are stored in a dictionary, e.g.:
+```python
+{"NT": "31d6cfe0d16ae931b73c59d7e0c089c0", "SHA1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"}
+```
 
 ## 2. See also
 - **[WinPwnage](https://github.com/rootm0s/WinPwnage) by [@rootm0s](https://github.com/rootm0s)**
